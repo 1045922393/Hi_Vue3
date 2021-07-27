@@ -13,6 +13,15 @@
     <input type="text" v-model="inputVal">
     <div>moneyRef: {{moneyRef}}</div>
     <div>activeData.money: {{activeData.money}}</div>
+    <slot name="slot1"></slot>
+
+    <button @click="turnTeleport">打开</button>
+    <teleport to="#teleportFather">
+      <div>
+        我是一个传送门 {{refMsg}}
+        <button @click="turnTeleport">关闭</button>
+      </div> 
+    </teleport>
   </div>
 </template>
 
@@ -139,6 +148,14 @@ export default {
       console.log(inputVal.value, 'inputVal had changed')
     })
 
+    // teleport
+    const showTeleport = ref(false);
+    // onMounted(()=> {
+    //   showTeleport.value = true
+    // })
+    const turnTeleport = () => {
+      showTeleport.value = !showTeleport.value
+    }
     return {
       tips,
       activeData,
@@ -148,7 +165,9 @@ export default {
       refMsg,
       refObj,
       inputVal,
-      moneyRef
+      moneyRef,
+      showTeleport,
+      turnTeleport
     };
   },
   data() {
