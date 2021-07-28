@@ -22,6 +22,10 @@
         <button @click="turnTeleport">关闭</button>
       </div> 
     </teleport>
+
+
+    <!-- emit -->
+    <div @click="$emit('my-click')">自定义事件</div>
   </div>
 </template>
 
@@ -40,6 +44,7 @@ import {
   watchEffect,
 } from "vue";
 export default {
+  emits: ['my-click'],
   name: "HelloWorld",
   props: {
     msg: String,
