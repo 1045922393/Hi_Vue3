@@ -7,15 +7,19 @@
     </template>
     <div>slot 2</div>
   </HelloWorld>
+  <custmRender v-model:custPropData="custPropData" />
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import custmRender from './components/custmRender.vue'
+import {ref} from 'vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    custmRender
   },
   setup(){
     function fatherMethod(){
@@ -25,9 +29,12 @@ export default {
     function clickHello() {
       console.log('click hello-world component');
     }
+
+    const custPropData = ref(1)
     return {
       fatherMethod,
-      clickHello
+      clickHello,
+      custPropData
     };
   }
 }
