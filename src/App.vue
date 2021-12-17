@@ -8,16 +8,19 @@
     <div>slot 2</div>
   </HelloWorld>
   <custmRender v-model:custPropData="custPropData" />
+  <functionCom level="1" key="keyOfFunctionCom">函数式组件</functionCom>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import custmRender from './components/custmRender.vue'
-import {ref} from 'vue'
+import functionCom from './components/functionCom.js'
+import {ref, reactive} from 'vue'
 
 export default {
   name: 'App',
   components: {
+    functionCom,
     HelloWorld,
     custmRender
   },
@@ -31,7 +34,12 @@ export default {
     }
 
     const custPropData = ref(1)
+
+    const keyOfFunctionCom = reactive({
+      key: 0
+    })
     return {
+      keyOfFunctionCom,
       fatherMethod,
       clickHello,
       custPropData

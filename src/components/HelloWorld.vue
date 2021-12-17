@@ -44,7 +44,7 @@ import {
   watchEffect,
 } from "vue";
 export default {
-  emits: ['my-click'],
+  emits: ['my-click', 'getMsgFromFather'],  // 组件中emit的触发 都应该在此处表明一次
   name: "HelloWorld",
   props: {
     msg: String,
