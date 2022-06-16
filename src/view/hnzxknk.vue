@@ -17,8 +17,9 @@ const change = () => {
   if (timeId) clearTimeout(timeId);
   timeId = setTimeout(() => {
     const box = document.querySelector(".box") as any;
+    const body = document.querySelector("body") as any;
     box.innerText = word.splice(Math.floor(Math.random() * word.length), 1);
-    box.style.background = rndColor();
+    body.style.background = rndColor();
   }, 300);
 };
 
