@@ -4,6 +4,9 @@
       <router-link class="game_box" :to="{ path: './hnzxknk' }"
         >害你在心口难开</router-link
       >
+      <router-link class="game_box" :to="{ path: './wolf_kill' }"
+        >狼人杀</router-link
+      >
     </div>
   </div>
 </template>

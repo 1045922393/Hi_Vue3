@@ -2,6 +2,10 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
   {
+    path: "/wolf_kill",
+    component: () => import("../view/wolfKill.vue"),
+  },
+  {
     path: "/hnzxknk",
     component: () => import("../view/hnzxknk.vue"),
   },

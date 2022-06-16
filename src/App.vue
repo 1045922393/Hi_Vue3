@@ -12,16 +12,19 @@
     <div>slot 2</div>
   </HelloWorld>
   <custmRender v-model:custPropData="custPropData" />
+  <functionCom level="1" key="keyOfFunctionCom">函数式组件</functionCom>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import custmRender from "./components/custmRender.vue";
 import { ref, watch, watchEffect } from "vue";
+import custmRender from "./components/custmRender.vue";
+import functionCom from "./components/functionCom.js";
 
 export default {
   name: "App",
   components: {
+    functionCom,
     HelloWorld,
     custmRender,
   },
@@ -39,7 +42,12 @@ export default {
     watchEffect(() => {
       console.log("custPropData turn to ", custPropData.value);
     });
+
+    const keyOfFunctionCom = reactive({
+      key: 0,
+    });
     return {
+      keyOfFunctionCom,
       fatherMethod,
       clickHello,
       custPropData,
