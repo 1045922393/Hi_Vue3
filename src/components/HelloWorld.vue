@@ -44,7 +44,7 @@ import {
   watchEffect,
 } from "vue";
 export default {
-  emits: ['my-click'],
+  emits: ['my-click', 'getMsgFromFather'],
   name: "HelloWorld",
   props: {
     msg: String,

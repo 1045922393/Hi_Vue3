@@ -1,7 +1,11 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <div id="teleportFather"></div>
-  <HelloWorld @my-click="clickHello" @getMsgFromFather="fatherMethod" msg="Hello Vue 3.0 + Vite" other="other attrs">
+  <HelloWorld
+    @my-click="clickHello"
+    @getMsgFromFather="fatherMethod"
+    msg="Hello Vue 3.0 + Vite"
+    other="other attrs"
+  >
     <template v-slot:slot1>
       <div>slot112312</div>
     </template>
@@ -11,38 +15,41 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import custmRender from './components/custmRender.vue'
-import {ref} from 'vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import custmRender from "./components/custmRender.vue";
+import { ref, watch, watchEffect } from "vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     HelloWorld,
-    custmRender
+    custmRender,
   },
-  setup(){
-    function fatherMethod(){
-      console.log('this log is from fatherMethod')
+  setup() {
+    function fatherMethod() {
+      console.log("this log is from fatherMethod");
     }
 
     function clickHello() {
-      console.log('click hello-world component');
+      console.log("click hello-world component");
     }
 
-    const custPropData = ref(1)
+    const custPropData = ref(1);
+
+    watchEffect(() => {
+      console.log("custPropData turn to ", custPropData.value);
+    });
     return {
       fatherMethod,
       clickHello,
-      custPropData
+      custPropData,
     };
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-#teleportFather 
-{
+#teleportFather {
   height: 200px;
   background: purple;
 }
