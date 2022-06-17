@@ -105,7 +105,7 @@
       </div>
     </Transition>
     <a class="group" @click="clickRule(1)">法官规则</a>
-    <div class="fs_18" v-show="showIDRule === 1">
+    <div class="fs_18 color_gradient" v-show="showIDRule === 1">
       1.法官喊出"天黑请闭眼"，所有玩家闭上眼睛，游戏进入黑夜。<br />
       2.法官喊出“预言家请睁眼”，预言家睁眼，并把要查验的身份的人告诉法官，法官用手势告知其查验的人是好人或坏人。随后，法官宣布“预言家请闭眼”。（手势可提前设置）<br />
       3. 法官宣布“守卫睁眼”，守卫确定本轮会守护谁。随后法官宣布“守卫请闭眼”。<br />
@@ -138,11 +138,29 @@ const clickRule = (index) => {
 </script>
 <style scoped lang="less">
 .wolf_kill {
+  background-image: linear-gradient(
+    to bottom,
+    #eb0505,
+    #ff0043,
+    #ff007d,
+    #ff00bd,
+    #e000ff
+  );
+  -webkit-background-clip: text;
+  color: transparent;
   text-align: center;
   font-size: 40px;
+  text-shadow: 1px 1px 4px #eb0505;
 }
 .wolf_kill_box {
-  background-color: antiquewhite;
+  background-image: linear-gradient(
+    to right top,
+    #051937,
+    #492b49,
+    #7a444f,
+    #996952,
+    #a49666
+  );
   min-height: 100vh;
 }
 .identities {
@@ -154,16 +172,39 @@ const clickRule = (index) => {
   border: 1px solid #999;
   box-shadow: 0 0 1px 1px #999;
   padding: 5px;
-  background-color: beige;
+  background-image: linear-gradient(
+    to left top,
+    #f2c8e0,
+    #e1cdec,
+    #cfd2f2,
+    #c0d7f0,
+    #b9dae8,
+    #b8dbe4,
+    #b8dbdf,
+    #badbda,
+    #b9dbda,
+    #b8dcda,
+    #b6dcda,
+    #b5dcda
+  );
   border-radius: 4px;
   width: 200px;
   .identity_name {
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
+    background-image: linear-gradient(to left top, #292424, #e000ff);
+    -webkit-background-clip: text;
+    // text-shadow: 0px 0px 1px #e000ff;
+    color: transparent;
+  }
+  .identity_desc {
+    text-shadow: 1px 1px 2px #292424;
   }
   .identity_img {
+    border-radius: 8px;
+    overflow: hidden;
     width: 200px;
     height: 200px;
   }
@@ -171,11 +212,51 @@ const clickRule = (index) => {
 .group {
   font-size: 20px;
   font-weight: bold;
-  background-color: cornflowerblue;
+  background-image: linear-gradient(
+    to right,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
   display: block;
   padding: 3px;
-  border-radius: 2px;
+  border-radius: 0px 20px 20px 0;
   margin-bottom: 4px;
+  color: #eee;
+  box-shadow: 0 1px 1px 1px #555;
+}
+
+.color_white {
+  color: #fefefe;
+}
+
+.color_gradient {
+  background-image: radial-gradient(
+    circle,
+    #f2c8e0,
+    #f1d3ea,
+    #f2def2,
+    #f4e8f8,
+    #f7f2fc,
+    #f4f3fc,
+    #f2f3fc,
+    #f1f4fb,
+    #e3edf7,
+    #d3e8f1,
+    #c2e2e7,
+    #b5dcda
+  );
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .fs_18 {
