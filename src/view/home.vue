@@ -111,10 +111,10 @@ const clickRouter = (index, path) => {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25vw;
-    min-height: 25vw;
+    width: 40vw;
+    min-height: 40vw;
     border-radius: 10px;
-    font-size: 2vw;
+    font-size: 5vw;
     font-weight: 800;
     color: #fff;
     background-color: black;

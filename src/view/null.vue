@@ -15,6 +15,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2vw;
+  font-size: 5vw;
 }
 </style>
