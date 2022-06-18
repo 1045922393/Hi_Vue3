@@ -27,7 +27,7 @@ const change = () => {
   }, 300);
 };
 
-var shakeThreshold = 1000; // 定义一个摇动的阈值
+var shakeThreshold = 2000; // 定义一个摇动的阈值
 var lastUpdate = 0; // 记录上一次摇动的时间
 var x, y, z, lastX, lastY, lastZ; // 定义x、y、z记录三个轴的数据以及上一次触发的数据
 // 运动传感器处理
