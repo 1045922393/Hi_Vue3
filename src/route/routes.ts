@@ -15,6 +15,16 @@ export const routes = [
     component: () => import("../view/hnzxknk.vue"),
   },
   {
+    path: "/null",
+    name: "德国心脏病",
+    component: () => import("../view/null.vue"),
+  },
+  {
+    path: "/null",
+    name: "四子连棋",
+    component: () => import("../view/null.vue"),
+  },
+  {
     path: "/",
     name: "首页",
     hide: true,

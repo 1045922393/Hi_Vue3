@@ -13,13 +13,18 @@
   </div>
   <div class="dialog" v-if="gameDialog">
     <span class="close" @click="gameDialog = false">x</span>
-    <div class="showCard" @click="init">
-      <transition name="fade" mode="default">
-        <div v-show="showImg" class="card-face">
-          <component class="firstImg" :is="listData[0]"></component>
-          <component class="secondImg" :is="listData[1]"></component>
-        </div>
-      </transition>
+    <div class="showCard" :class="{ greenStatus: showImg }" @click="init">
+      <div v-show="showImg" class="card-face">
+        <component class="firstImg" :is="listData[0]"></component>
+        <component class="secondImg" :is="listData[1]"></component>
+      </div>
+      <div v-show="!showImg" class="waiting">
+        <span class="jump" style="--delay: 0s">R</span>
+        <span class="jump" style="--delay: 0.2s">e</span>
+        <span class="jump" style="--delay: 0.4s">a</span>
+        <span class="jump" style="--delay: 0.6s">d</span>
+        <span class="jump" style="--delay: 0.8s">y</span>
+      </div>
     </div>
   </div>
   <div class="dialog" v-if="dialogShow">
@@ -154,10 +159,24 @@ img,
   height: 600px;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.75);
-  border: 10px solid yellow;
-  transition: 1s all;
-  transform-style: preserve-3d;
+  border: 10px solid red;
+  &.greenStatus {
+    border: 10px solid greenyellow;
+  }
+  .waiting {
+    font-size: 50px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
+    .jump {
+      display: inline-block;
+      animation: 2s linear infinite goJump;
+      animation-delay: var(--delay);
+    }
+  }
   .card-face {
     width: 100%;
     height: 100%;
@@ -246,6 +265,18 @@ img,
     top: 5px;
     left: 5px;
     font-size: 30px;
+  }
+}
+
+@keyframes goJump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 </style>
