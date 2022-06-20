@@ -20,9 +20,9 @@ export const routes = [
     component: () => import("../view/null.vue"),
   },
   {
-    path: "/null",
+    path: "/fourChess",
     name: "四子连棋",
-    component: () => import("../view/null.vue"),
+    component: () => import("../view/fourChess.vue"),
   },
   {
     path: "/",

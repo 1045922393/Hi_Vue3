@@ -2,7 +2,7 @@
   "name": "hello-vue3",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite --open --host",
     "build": "vite build"
   },
   "dependencies": {
