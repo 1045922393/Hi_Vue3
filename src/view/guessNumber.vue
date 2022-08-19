@@ -15,10 +15,7 @@
       <input id="input" type="number" class="input_box" v-model="guess" @keyup.enter="onGuess" />
     </label>
     <div class="line_break_10"></div>
-    <div class="target">
-      {{ target }}
-      <div></div>
-    </div>
+    <div class="target" @click="onReset">点击重新开始游戏: {{ target }}</div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -61,6 +58,7 @@ function onReset() {
   guess.value = 0;
   min.value = 0;
   max.value = 100;
+  targetVisible.value = 0;
   target.value = (Math.random() * 100) | 0;
 }
 </script>
