@@ -1,5 +1,10 @@
 export const routes = [
   {
+    path: '/guessNumber',
+    name: '猜数字',
+    component: ()=>import('../view/guessNumber.vue')
+  },
+  {
     path: "/shining",
     name: "闪灵快手",
     component: () => import("../view/shining.vue"),
