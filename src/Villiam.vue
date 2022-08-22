@@ -14,7 +14,6 @@
 .home {
   width: 100%;
   height: 100%;
-}
-.villiam {
+  overflow-y: auto;
 }
 </style>

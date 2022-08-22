@@ -5,8 +5,8 @@ export default () => {
 
     const app = document.getElementById('app');
 
-    const designWidth = 1920;
-    const designHeight = 944;
+    const designWidth = 390;
+    const designHeight = 844;
 
     const scaleX = ww / designWidth;
     const scaleY = wh / designHeight;

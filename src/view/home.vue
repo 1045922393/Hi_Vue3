@@ -116,6 +116,7 @@ onBeforeUnmount(() => {
   display: flex;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 
   .out_box {
     padding: 10px;
@@ -136,10 +137,10 @@ onBeforeUnmount(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 800px;
-    min-height: 800px;
-    border-radius: 100px;
-    font-size: 100px;
+    width: 200px;
+    min-height: 200px;
+    border-radius: 20px;
+    font-size: 20px;
     font-weight: 800;
     color: #fff;
     background-color: black;

@@ -77,7 +77,7 @@ function onReset() {
     height: 10px;
   }
   .target {
-    font-size: 40px;
+    font-size: 20px;
     color: #876;
     opacity: v-bind(targetVisible);
   }

@@ -83,25 +83,25 @@ onUnmounted(() => {
   window.removeEventListener('resize', textDirection);
 });
 
-const rotateFn = () => {
-  const wh = window.innerHeight;
-  const ww = window.innerWidth;
+// const rotateFn = () => {
+//   const wh = window.innerHeight;
+//   const ww = window.innerWidth;
 
-  const body = document.querySelector('.home');
-  if (wh > ww) {
-    body && (body.style.transform = 'rotate(90deg)');
-  } else {
-    body && (body.style.transform = 'rotate(00deg)');
-  }
-};
-onMounted(() => {
-  rotateFn();
-  window.addEventListener('resize', rotateFn);
-});
+//   const body = document.querySelector('.home');
+//   if (wh > ww) {
+//     body && (body.style.transform = 'rotate(90deg)');
+//   } else {
+//     body && (body.style.transform = 'rotate(00deg)');
+//   }
+// };
+// onMounted(() => {
+//   rotateFn();
+//   window.addEventListener('resize', rotateFn);
+// });
 
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', rotateFn);
-});
+// onBeforeUnmount(() => {
+//   window.removeEventListener('resize', rotateFn);
+// });
 </script>
 <style scoped lang="less">
 .hnzxknk {
@@ -115,9 +115,10 @@ onBeforeUnmount(() => {
     height: 100%;
     // line-height: 100vh;
     text-align: center;
-    font-size: 200px;
+    font-size: 150px;
     // color: #eee;
     .word {
+      // transform: rotate(v-bind(degComp));
       background-image: linear-gradient(
         to bottom,
         v-bind(wordColor),
