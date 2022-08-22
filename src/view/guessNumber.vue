@@ -66,9 +66,13 @@ function onReset() {
 .guessNumber {
   padding: 20px;
   background: #e6ebf5;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   .line_break_10 {
     height: 10px;
   }
