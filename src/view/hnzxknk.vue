@@ -12,7 +12,7 @@
 import { word } from './hnzxknk/words';
 import { rndColor } from '../utils/index';
 // ==================================== 三、方法类 ====================================
-import { onMounted, onUnmounted, ref, computed } from 'vue';
+import { onMounted, onUnmounted, onBeforeUnmount, ref, computed } from 'vue';
 // ==================================== 四、API类  ====================================
 const wordColor = ref('rgb(0,0,0)');
 let timeId: any = null;
@@ -81,6 +81,26 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('devicemotion', deviceMotionHandler, false);
   window.removeEventListener('resize', textDirection);
+});
+
+const rotateFn = () => {
+  const wh = window.innerHeight;
+  const ww = window.innerWidth;
+
+  const body = document.querySelector('.home');
+  if (wh > ww) {
+    body && (body.style.transform = 'rotate(90deg)');
+  } else {
+    body && (body.style.transform = 'rotate(00deg)');
+  }
+};
+onMounted(() => {
+  rotateFn();
+  window.addEventListener('resize', rotateFn);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', rotateFn);
 });
 </script>
 <style scoped lang="less">
