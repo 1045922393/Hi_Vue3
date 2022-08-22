@@ -12,12 +12,7 @@
       <div class="tools">
         <div @click="goBack" :class="{ disabled: banLastStep }">上一步</div>
       </div>
-      <div
-        class="column"
-        v-for="(col, index) in chessBoard"
-        :key="index"
-        @click="playChess(index)"
-      >
+      <div class="column" v-for="(col, index) in chessBoard" :key="index" @click="playChess(index)">
         <div
           class="chess"
           :class="{ play1: chess === 1, play2: chess === 2 }"
@@ -33,7 +28,7 @@
 // ==================================== 一、组件类 ====================================
 // ==================================== 二、变量类 ====================================
 // ==================================== 三、方法类 ====================================
-import { ref, Ref, onMounted, computed, reactive } from "vue";
+import { ref, Ref, onMounted, computed, reactive } from 'vue';
 // ==================================== 四、API类  ====================================
 
 const play1 = ref(1);
@@ -89,23 +84,23 @@ const goBack = () => {
 </script>
 <style scoped lang="less">
 .outBoard {
-  height: 100vh;
-  width: 100vw;
+  width: 1920px;
+  height: 944px;
   display: flex;
   background-color: #333;
 }
 .chess_out {
-  --borderPadding: 2vw;
+  --borderPadding: 400px;
   position: relative;
   background-color: #333;
   border-radius: 8px;
   margin: auto;
   padding: 0 var(--borderPadding);
   box-sizing: border-box;
-  width: 100vw;
-  height: 100vw;
-  max-height: 100vh;
-  max-width: 100vh;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  max-width: 100%;
   display: flex;
   .column {
     display: flex;
@@ -113,7 +108,7 @@ const goBack = () => {
     flex: 1;
     justify-content: center;
     margin: 0 10px;
-    padding: var(--borderPadding) 0;
+    padding: 100px 0;
 
     .chess {
       justify-content: center;
@@ -131,7 +126,7 @@ const goBack = () => {
   }
 
   .legend {
-    position: fixed;
+    position: absolute;
     top: 10px;
     left: 10px;
     color: rgb(255, 2, 196);
@@ -162,8 +157,8 @@ const goBack = () => {
 
   .tools {
     position: fixed;
-    left: 2vw;
-    bottom: 2vh;
+    left: 20px;
+    bottom: 20px;
     color: #fff;
     font-size: 2rem;
 

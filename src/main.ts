@@ -1,14 +1,16 @@
-import { createApp, createRenderer } from "vue";
+import { createApp, createRenderer } from 'vue';
 // import App from './App.vue'
-import Villiam from "./Villiam.vue";
-import "./index.less";
-import router from "./route/router";
+import Villiam from './Villiam.vue';
+import './index.less';
+import router from './route/router';
+import resize from './utils/resize';
 
+resize();
 // vue3变动 不再使用 new Vue();
 const app = createApp(Villiam);
 
 app.use(router);
-app.mount("#app");
+app.mount('#app');
 
 // 自定义渲染函数 createRenderer
 // createElement insert

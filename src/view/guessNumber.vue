@@ -42,7 +42,7 @@ function onGuess() {
     return;
   }
   if (guess.value == target.value) {
-    alert('猜对了');
+    alert(`嘣!!!你${Math.random() < 0.5 ? '输' : '赢'}了!`);
     targetVisible.value = 1;
     // onReset();
     return;

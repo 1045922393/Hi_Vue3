@@ -43,7 +43,7 @@ import { onBeforeUnmount, onMounted, computed, ref, watch } from 'vue';
 // ==================================== 四、API类  ====================================
 const routerComp = computed(() => routes.filter((item) => !item.hide));
 onMounted(() => {
-  const box: any = document.querySelector('.v_home');
+  const box: any = document.querySelector('body');
   box.style.background = rndColor();
 });
 
@@ -114,13 +114,13 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 
   .out_box {
     padding: 10px;
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 200px;
     // overflow: hidden;
     // flex-wrap: wrap;
@@ -136,10 +136,10 @@ onBeforeUnmount(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    min-height: 40vw;
+    width: 800px;
+    min-height: 800px;
     border-radius: 100px;
-    font-size: 5vw;
+    font-size: 100px;
     font-weight: 800;
     color: #fff;
     background-color: black;
