@@ -63,8 +63,7 @@ let elSize: number = 10;
 let snakeStatus: Ref<TStatus> = ref('unStart');
 let snakeList: Array<[number, number]> = [];
 let foodPosition: Ref<Array<number>> = ref([0, 0]);
-let snakeColor = ['green', 'red'];
-let foodColor = 'red';
+let foodColor = '#ff5732';
 let stopTime = () => {};
 
 const initCtx = () => {
@@ -104,7 +103,7 @@ function renderFood() {
 // 渲染蛇
 function renderSnake() {
   snakeList.forEach((item, index) => {
-    FR(index === snakeList.length - 1 ? 'red' : 'green', [...item, elSize, elSize]);
+    FR(index === snakeList.length - 1 ? '#ff5732' : '#3cb056', [...item, elSize, elSize]);
   });
 }
 
@@ -231,8 +230,8 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
   #ctx {
-    border: 1px solid #000000;
     border-radius: 4px;
+    box-shadow: 0 0 3px 2px #9d9d9d;
   }
 }
 </style>
