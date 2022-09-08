@@ -8,7 +8,7 @@
     <div style="height: 10px"></div>
     <div>游戏规则: 别让食物暴露在空气{{ restTime }}秒!!!</div>
     <div style="height: 10px"></div>
-    <canvas id="ctx" width="900" height="600"></canvas>
+    <canvas id="ctx" :width="config.w" :height="config.h"></canvas>
   </div>
 </template>
 <script lang="ts" setup>
@@ -41,7 +41,12 @@ let config = {
     [30, 100],
     [40, 100],
   ],
+  headColor: '#ff5732',
+  bodyColor: '#3cb056',
+  foodColor: '#ff5732',
   time: 15,
+  w: 400,
+  h: 300,
 };
 
 let FR: any;
@@ -59,11 +64,10 @@ let speed = computed(() => {
   if (score.value >= 10) return 10;
   return score.value;
 });
-let elSize: number = 10;
+const elSize: number = 10;
 let snakeStatus: Ref<TStatus> = ref('unStart');
 let snakeList: Array<[number, number]> = [];
 let foodPosition: Ref<Array<number>> = ref([0, 0]);
-let foodColor = '#ff5732';
 let stopTime = () => {};
 
 const initCtx = () => {
@@ -72,7 +76,7 @@ const initCtx = () => {
     ctx = canvas?.getContext('2d');
   }
   FR = bindFillRect(ctx);
-  FR('#eee', [0, 0, 900, 600]);
+  FR('#eee', [0, 0, config.w, config.h]);
 };
 
 const authorityMap = new Map([
@@ -85,32 +89,40 @@ const authorityMap = new Map([
 document.addEventListener('keydown', (e) => {
   e.preventDefault();
   const targetDir = e.code as TDirection;
+  dealDir(targetDir);
+});
+
+function dealDir(targetDir) {
   if (
-    ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'].includes(e.code) &&
+    ['ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown'].includes(targetDir) &&
     snakeStatus.value === 'start' &&
     authorityMap.get(direction.value)?.includes(targetDir)
   ) {
     direction.value = targetDir;
   }
-});
+}
 
 // 方法
 // 渲染食物
 function renderFood() {
-  FR(foodColor, [...foodPosition.value, elSize, elSize]);
+  FR(config.foodColor, [...foodPosition.value, elSize, elSize]);
 }
 
 // 渲染蛇
 function renderSnake() {
   snakeList.forEach((item, index) => {
-    FR(index === snakeList.length - 1 ? '#ff5732' : '#3cb056', [...item, elSize, elSize]);
+    FR(index === snakeList.length - 1 ? config.headColor : config.bodyColor, [
+      ...item,
+      elSize,
+      elSize,
+    ]);
   });
 }
 
 // 计算食物
 function foodComp() {
-  foodPosition.value[0] = (((Math.random() * 891) / 10) | 0) * 10;
-  foodPosition.value[1] = (((Math.random() * 591) / 10) | 0) * 10;
+  foodPosition.value[0] = (((Math.random() * (config.w - 9)) / 10) | 0) * 10;
+  foodPosition.value[1] = (((Math.random() * (config.h - 9)) / 10) | 0) * 10;
 }
 
 // 计算蛇行进
@@ -124,10 +136,10 @@ function snakeRun() {
   } else {
     nextLocation[1] = nextLocation[1] + 10 * (dir === 'ArrowDown' ? 1 : -1);
   }
-  if (nextLocation[0] < 0) nextLocation[0] = 890;
-  if (nextLocation[1] < 0) nextLocation[1] = 590;
-  if (nextLocation[0] > 890) nextLocation[0] = 0;
-  if (nextLocation[1] > 590) nextLocation[1] = 0;
+  if (nextLocation[0] < 0) nextLocation[0] = config.w - 10;
+  if (nextLocation[1] < 0) nextLocation[1] = config.h - 10;
+  if (nextLocation[0] > config.w - 10) nextLocation[0] = 0;
+  if (nextLocation[1] > config.h - 10) nextLocation[1] = 0;
   snakeList.push(nextLocation);
   if (!eatFood(nextLocation)) {
     const traceLocation: any = snakeList.shift();
@@ -182,7 +194,7 @@ watch(
     if (newRestTime <= 0) {
       snakeStatus.value = 'unStart';
       alert('游戏结束,你的得分是' + score.value);
-      ctx.clearRect(0, 0, 900, 600);
+      ctx.clearRect(0, 0, config.w, config.h);
       initCtx();
     }
   },
