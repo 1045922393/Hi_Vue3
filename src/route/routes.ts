@@ -35,6 +35,11 @@ export const routes = [
     component: () => import('../view/snake.vue'),
   },
   {
+    path: '/boyAndGirl',
+    name: '😊了个😊',
+    component: () => import('../view/xiaoxiaole/index.vue'),
+  },
+  {
     path: '/',
     name: '首页',
     hide: true,
