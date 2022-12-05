@@ -8,12 +8,12 @@
 // ==================================== 一、组件类 ====================================
 // ==================================== 二、变量类 ====================================
 // ==================================== 三、方法类 ====================================
-import { defineProps } from "vue";
+import { defineProps } from 'vue';
 // ==================================== 四、API类  ====================================
 const props = defineProps({
   text: {
     type: String,
-    default: "Loading",
+    default: 'Loading',
   },
 });
 </script>
@@ -39,7 +39,7 @@ const props = defineProps({
 }
 
 .button:before {
-  content: "";
+  content: '';
   position: absolute;
   top: -5px;
   left: -5px;

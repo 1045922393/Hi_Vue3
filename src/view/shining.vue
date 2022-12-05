@@ -5,11 +5,7 @@
         <component :is="imgItem" @click="showDialog(imgItem)"></component>
       </template>
     </div>
-    <MyButton
-      class="my_button"
-      text="START"
-      @click="gameDialog = true"
-    ></MyButton>
+    <MyButton class="my_button" text="START" @click="gameDialog = true"></MyButton>
   </div>
   <div class="dialog" v-if="gameDialog">
     <span class="close" @click="gameDialog = false">x</span>
@@ -33,30 +29,30 @@
   </div>
 </template>
 <script lang="ts" setup>
-import MyButton from "../components/myButton.vue";
-import book from "./shining/book.vue";
-import bottle from "./shining/bottle.vue";
-import ghost from "./shining/ghost.vue";
-import mouse from "./shining/mouse.vue";
-import sofa from "./shining/sofa.vue";
+import MyButton from '../components/myButton.vue';
+import book from './shining/book.vue';
+import bottle from './shining/bottle.vue';
+import ghost from './shining/ghost.vue';
+import mouse from './shining/mouse.vue';
+import sofa from './shining/sofa.vue';
 //@@description@@
 // ==================================== 一、组件类 ====================================
 // ==================================== 二、变量类 ====================================
 // ==================================== 三、方法类 ====================================
-import { onMounted, ref, Ref, reactive, computed, watch } from "vue";
+import { onMounted, ref, Ref, reactive, computed, watch } from 'vue';
 // ==================================== 四、API类  ====================================
 const listData: Ref<Array<any>> = ref([]);
 const showImg = ref(false);
 const dialogShow = ref(false);
 const gameDialog = ref(false);
-const type = ["老鼠", "酒瓶", "幽灵", "沙发", "书本"],
+const type = ['老鼠', '酒瓶', '幽灵', '沙发', '书本'],
   components = [mouse, bottle, ghost, sofa, book],
-  color = ["#B2ABAC", "#279152", "#F8EDD2", "#ff001e", "#3883e1"],
-  showColor = ref(["#B2ABAC", "#279152", "#F8EDD2", "#ff001e", "#3883e1"]);
-const imgTop = ref("0");
-const img2Top = ref("0");
-const imgDeg = ref("0");
-const img2Deg = ref("0");
+  color = ['#B2ABAC', '#279152', '#F8EDD2', '#ff001e', '#3883e1'],
+  showColor = ref(['#B2ABAC', '#279152', '#F8EDD2', '#ff001e', '#3883e1']);
+const imgTop = ref('0');
+const img2Top = ref('0');
+const imgDeg = ref('0');
+const img2Deg = ref('0');
 const mouseColor = computed(() => showColor.value[0]);
 const bottleColor = computed(() => showColor.value[1]);
 const ghostColor = computed(() => showColor.value[2]);
@@ -113,11 +109,11 @@ const init = () => {
   if (timeId) clearInterval(timeId);
   const time = Math.floor(Math.random() * 4) + 2;
   timeId = setTimeout(() => {
-    imgTop.value = Math.random() * 400 + "px";
-    img2Top.value = Math.random() * 400 + "px";
+    imgTop.value = Math.random() * 400 + 'px';
+    img2Top.value = Math.random() * 400 + 'px';
     listData.value = showCard();
-    imgDeg.value = Math.floor(Math.random() * 360) + 1 + "deg";
-    img2Deg.value = Math.floor(Math.random() * 360) + 1 + "deg";
+    imgDeg.value = Math.floor(Math.random() * 360) + 1 + 'deg';
+    img2Deg.value = Math.floor(Math.random() * 360) + 1 + 'deg';
     showImg.value = true;
   }, time * 1000);
 };
@@ -189,28 +185,28 @@ img,
   // 改变svg颜色
   /deep/svg {
     // 老鼠
-    path[fill="#B2ABAC"] {
+    path[fill='#B2ABAC'] {
       fill: v-bind(mouseColor);
     }
     // 酒瓶
-    path[fill="#279152"] {
+    path[fill='#279152'] {
       fill: v-bind(bottleColor);
     }
 
     // 幽灵
-    path[fill="#F8EDD2"] {
+    path[fill='#F8EDD2'] {
       // fill: red;
       fill: v-bind(ghostColor);
     }
 
     // 沙发
-    path[fill="#ff001e"] {
+    path[fill='#ff001e'] {
       // fill: green;
       fill: v-bind(sofaColor);
     }
 
     // book
-    path[fill="#3883e1"] {
+    path[fill='#3883e1'] {
       // fill: red;
       fill: v-bind(bookColor);
     }

@@ -96,8 +96,7 @@
             丘比特在首夜狼人行动前，选择任意两名玩家成为情侣。
             这两名玩家若是其中一名死去，另一名也要跟着殉情。第一天晚上情侣睁眼互相确认，丘比特无法得知情侣的具体身份。
             丘比特不可以不使用技能，若不操作超时则随机选择两个目标。 <br />
-            补充:丘比特被预言家查验为好人。
-            因殉情出局的角色不可以发动技能，可以有遗言。
+            补充:丘比特被预言家查验为好人。 因殉情出局的角色不可以发动技能，可以有遗言。
             若丘比特与情侣成为第三方阵营，胜利条件为所有其他阵营玩家出局，其余情况同情侣胜利条件相同。
             如果情侣形成了第三方阵营，好人和狼人在原来的胜利条件基础上还要加上放逐或击杀情侣，但不需要放逐或击杀丘比特。
           </div>
@@ -125,7 +124,7 @@
 // ==================================== 一、组件类 ====================================
 // ==================================== 二、变量类 ====================================
 // ==================================== 三、方法类 ====================================
-import { ref, reactive } from "vue";
+import { ref, reactive } from 'vue';
 // ==================================== 四、API类  ====================================
 const showIDRule = ref(-1);
 
@@ -138,14 +137,7 @@ const clickRule = (index) => {
 </script>
 <style scoped lang="less">
 .wolf_kill {
-  background-image: linear-gradient(
-    to bottom,
-    #eb0505,
-    #ff0043,
-    #ff007d,
-    #ff00bd,
-    #e000ff
-  );
+  background-image: linear-gradient(to bottom, #eb0505, #ff0043, #ff007d, #ff00bd, #e000ff);
   -webkit-background-clip: text;
   color: transparent;
   text-align: center;
@@ -153,14 +145,7 @@ const clickRule = (index) => {
   text-shadow: 1px 1px 4px #eb0505;
 }
 .wolf_kill_box {
-  background-image: linear-gradient(
-    to right top,
-    #051937,
-    #492b49,
-    #7a444f,
-    #996952,
-    #a49666
-  );
+  background-image: linear-gradient(to right top, #051937, #492b49, #7a444f, #996952, #a49666);
   min-height: 100vh;
 }
 .identities {

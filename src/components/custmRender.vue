@@ -1,24 +1,24 @@
 <template>
   <div class="customRender">自定义渲染函数</div>
-  <div>props: {{custPropData}}</div>
+  <div>props: {{ custPropData }}</div>
   <button @click="addPropData">增加custPropData</button>
 </template>
 
 <script>
 export default {
   props: {
-    custPropData: 0
+    custPropData: 0,
   },
   emits: ['update:custPropData'],
-  setup(props, {emit}){
+  setup(props, { emit }) {
     function addPropData() {
-      emit('update:custPropData', props.custPropData+1)
+      emit('update:custPropData', props.custPropData + 1);
     }
     return {
-      addPropData
-    }
-  }
-}
+      addPropData,
+    };
+  },
+};
 </script>
 
 <style>
@@ -26,5 +26,4 @@ export default {
   height: 400px;
   background: rebeccapurple;
 }
-
 </style>

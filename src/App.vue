@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import { ref, watch, watchEffect } from "vue";
-import custmRender from "./components/custmRender.vue";
-import functionCom from "./components/functionCom.js";
+import HelloWorld from './components/HelloWorld.vue';
+import { ref, watch, watchEffect } from 'vue';
+import custmRender from './components/custmRender.vue';
+import functionCom from './components/functionCom.js';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     functionCom,
     HelloWorld,
@@ -30,17 +30,17 @@ export default {
   },
   setup() {
     function fatherMethod() {
-      console.log("this log is from fatherMethod");
+      console.log('this log is from fatherMethod');
     }
 
     function clickHello() {
-      console.log("click hello-world component");
+      console.log('click hello-world component');
     }
 
     const custPropData = ref(1);
 
     watchEffect(() => {
-      console.log("custPropData turn to ", custPropData.value);
+      console.log('custPropData turn to ', custPropData.value);
     });
 
     const keyOfFunctionCom = reactive({

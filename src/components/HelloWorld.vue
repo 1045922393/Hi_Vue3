@@ -2,10 +2,7 @@
   <div :style="'background:' + normal">
     <h1>{{ msg }}</h1>
     <button @click="count++">count is: {{ count }}</button>
-    <p>
-      Edit <code>components/HelloWorld.vue</code> to test hot module
-      replacement.
-    </p>
+    <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
     <div v-if="counter <= 10">{{ counter }}</div>
     <div>{{ doubleConter }}</div>
     <div>{{ activeData2.name }}</div>
@@ -35,19 +32,10 @@
 // reactive 生成一个下面都是响应式数据的对象
 // ref 生成一个响应式数据
 // reactive >> ref 可以通过 toRefs() 方法解构
-import {
-  reactive,
-  computed,
-  onMounted,
-  onUnmounted,
-  ref,
-  toRefs,
-  watch,
-  watchEffect,
-} from "vue";
+import { reactive, computed, onMounted, onUnmounted, ref, toRefs, watch, watchEffect } from 'vue';
 export default {
-  emits: ["my-click", "getMsgFromFather"], // 组件中emit的触发 都应该在此处表明一次
-  name: "HelloWorld",
+  emits: ['my-click', 'getMsgFromFather'], // 组件中emit的触发 都应该在此处表明一次
+  name: 'HelloWorld',
   props: {
     msg: String,
   },
@@ -55,7 +43,7 @@ export default {
   // setup中的hook: onBeforeMount,onMounted,onBeforeUpdate,onUpdated,onBeforeUnmount,onUnmounted,onErrorCaptured,onRenderTracked,onRenderTriggered
   // context : attrs, slots, emit
   setup(props, { attrs, slots, emit }) {
-    console.log(attrs.other, "attrs");
+    console.log(attrs.other, 'attrs');
     console.log(slots.default);
     console.log(emit);
     // part1
@@ -78,7 +66,7 @@ export default {
 
     let timer;
     onMounted(() => {
-      console.log(props, "props");
+      console.log(props, 'props');
       timer = setInterval(() => {
         activeData.counter++;
         activeData.info.height++;
@@ -90,7 +78,7 @@ export default {
       (val) => {
         if (val >= 20) {
           clearInterval(timer);
-          emit("getMsgFromFather"); // 代替this.$emit
+          emit('getMsgFromFather'); // 代替this.$emit
         }
       },
     );
@@ -98,12 +86,12 @@ export default {
     watch(
       () => activeData.info.height,
       (val) => {
-        console.log(val, "[watch activeData.info.height]");
+        console.log(val, '[watch activeData.info.height]');
       },
     );
     // watchEffect 拦截了 reactive 数据的 get
     watchEffect(() => {
-      console.log(activeData.doubleConter, "has changed");
+      console.log(activeData.doubleConter, 'has changed');
     });
     onUnmounted(() => {
       clearInterval(timer);
@@ -111,31 +99,31 @@ export default {
 
     // part2
     const activeData2 = reactive({
-      name: "noise",
+      name: 'noise',
     });
 
     onMounted(() => {
       setTimeout(() => {
-        activeData2.name = "quiet";
+        activeData2.name = 'quiet';
       }, 2000);
     });
 
     // ref part
-    let refMsg = ref("I am refMsg");
-    console.log("ref part");
+    let refMsg = ref('I am refMsg');
+    console.log('ref part');
     console.log(refMsg.value);
-    refMsg.value = "refMsg had changed";
+    refMsg.value = 'refMsg had changed';
     console.log(refMsg);
-    refMsg.value = "refMsg had changed second";
-    refMsg.value = "refMsg had changed third";
-    console.log("ref part");
+    refMsg.value = 'refMsg had changed second';
+    refMsg.value = 'refMsg had changed third';
+    console.log('ref part');
 
     // 复杂类型的ref
-    console.log("复杂类型ref");
+    console.log('复杂类型ref');
     let refObj = ref({ a: 1 });
     console.log(refObj.value);
     refObj.value.a = 2;
-    console.log("复杂类型ref");
+    console.log('复杂类型ref');
 
     // 通过ref修改dom结构
     // ref(null) 返回一个在结构上同名的变量
@@ -150,10 +138,10 @@ export default {
     );
 
     // input part
-    let inputVal = ref("12312");
+    let inputVal = ref('12312');
 
     watchEffect(() => {
-      console.log(inputVal.value, "inputVal had changed");
+      console.log(inputVal.value, 'inputVal had changed');
     });
 
     // teleport
@@ -187,14 +175,11 @@ export default {
 
 function showColor() {
   const color = reactive({
-    normal: "rgb(65, 184, 131)",
+    normal: 'rgb(65, 184, 131)',
   });
   onMounted(() => {
     setInterval(() => {
-      color.normal =
-        color.normal === "rgb(53, 73, 94)"
-          ? "rgb(65, 184, 131)"
-          : "rgb(53, 73, 94)";
+      color.normal = color.normal === 'rgb(53, 73, 94)' ? 'rgb(65, 184, 131)' : 'rgb(53, 73, 94)';
     }, 2000);
   });
 
