@@ -40,7 +40,9 @@ import sofa from './shining/sofa.vue';
 // ==================================== 二、变量类 ====================================
 // ==================================== 三、方法类 ====================================
 import { onMounted, ref, Ref, reactive, computed, watch } from 'vue';
+import vertical from '@/utils/vertical';
 // ==================================== 四、API类  ====================================
+vertical.setup();
 const listData: Ref<Array<any>> = ref([]);
 const showImg = ref(false);
 const dialogShow = ref(false);

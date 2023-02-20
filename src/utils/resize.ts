@@ -3,17 +3,26 @@ export default () => {
     const wh = window.innerHeight;
     const ww = window.innerWidth;
 
-    const app = document.getElementById('app');
+    let isRotate = false;
 
-    const designWidth = 390;
-    const designHeight = 844;
+    if (wh > ww) {
+      isRotate = true;
+    }
 
-    const scaleX = ww / designWidth;
-    const scaleY = wh / designHeight;
+    const app = document.querySelector('body');
+
+    const designWidth = 812;
+    const designHeight = 375;
+
+    const scaleX = Math.max(wh, ww) / designWidth;
+    const scaleY = Math.min(wh, ww) / designHeight;
 
     const scaleCoefficient = Math.min(scaleX, scaleY).toFixed(6);
 
-    app && (app.style.transform = `scale(${scaleCoefficient})`);
+    app &&
+      (app.style.transform = `scale(${scaleCoefficient}) ${
+        isRotate ? 'rotate(90deg)' : 'rotate(0deg)'
+      }`);
   };
   refresh();
   window.addEventListener('resize', refresh);

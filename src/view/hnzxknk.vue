@@ -79,7 +79,7 @@ onMounted(() => {
   }
 });
 onUnmounted(() => {
-  window.removeEventListener('devicemotion', deviceMotionHandler, false);
+  // window.removeEventListener('devicemotion', deviceMotionHandler, false);
   window.removeEventListener('resize', textDirection);
 });
 

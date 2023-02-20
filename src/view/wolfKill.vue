@@ -124,7 +124,9 @@
 // ==================================== 一、组件类 ====================================
 // ==================================== 二、变量类 ====================================
 // ==================================== 三、方法类 ====================================
-import { ref, reactive } from 'vue';
+import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
+import resize from '@/utils/resize';
+import vertical from '@/utils/vertical';
 // ==================================== 四、API类  ====================================
 const showIDRule = ref(-1);
 
@@ -134,6 +136,16 @@ const clickRule = (index) => {
     showIDRule.value = index;
   }
 };
+vertical.setup();
+
+// onMounted(() => {
+//   const app = document.querySelector('body');
+//   app && (app.style.transform = `scale(1) rotate(0deg)`);
+// });
+
+// onBeforeUnmount(() => {
+//   resize();
+// });
 </script>
 <style scoped lang="less">
 .wolf_kill {

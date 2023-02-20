@@ -45,6 +45,8 @@
 
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue';
+import vertical from '@/utils/vertical';
+vertical.setup();
 // 生成随机id
 const randomString: (len: number) => string = (len) => {
   const pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
