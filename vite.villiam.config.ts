@@ -1,5 +1,5 @@
 /** @type {import('vite').UserConfig} */
-// config for https://vercel.com/1045922393/villiam/CWv6Tcou7sYSoZFoi9Smnkk3Rfn2?filter=all
+// config for https://github.com/1045922393/1045922393.github.io
 // @ts-nocheck
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
@@ -8,6 +8,10 @@ const path = require('path');
 
 export default ({ command, mode }) => {
   return defineConfig({
+    base: '/villiam/',
+    build: {
+      outDir: 'villiam',
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'), // 路径别名

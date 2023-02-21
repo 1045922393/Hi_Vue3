@@ -5,6 +5,7 @@
     "preinstall": "npx only-allow pnpm",
     "dev": "vite --open --host",
     "build": "vite build",
+    "vbuild": "vite build --config vite.villiam.config.ts",
     "prettier": "prettier --write src/"
   },
   "dependencies": {
