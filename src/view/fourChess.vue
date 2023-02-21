@@ -94,7 +94,7 @@ const goBack = () => {
 .chess_out {
   --borderPadding: 400px;
   position: relative;
-  background-color: #333;
+  background: url('@/assets/chess_bg.jpeg') left top / 100% 100% no-repeat;
   border-radius: 8px;
   margin: auto;
   padding: 0 var(--borderPadding);
@@ -119,10 +119,11 @@ const goBack = () => {
       flex: 1;
       width: 100%;
       height: 100%;
-      border: 1px solid #333;
+      box-sizing: content-box;
+      box-shadow: 0 0 20px #333;
       border-radius: 50%;
       margin: 10px 0;
-      background-color: #f7f9f7;
+      background: linear-gradient(90deg, #000, #333, #666, #999, #eee, #fff);
       transition: all 0.3s;
     }
   }
@@ -137,11 +138,12 @@ const goBack = () => {
       display: flex;
       justify-content: start;
       align-items: center;
+
       &.color1 {
-        color: #1500d9;
+        color: #02010f;
       }
       &.color2 {
-        color: #ff1744;
+        color: #f0e5e7;
       }
       &.highLight {
         transform: scale(1.3);
@@ -170,10 +172,10 @@ const goBack = () => {
   }
 
   .play1 {
-    background-color: #1500d9 !important;
+    background: #02010f !important;
   }
   .play2 {
-    background-color: #ff1744 !important;
+    background: #f0e5e7 !important;
   }
 }
 </style>

@@ -1,5 +1,12 @@
 <template>
   <div class="guessNumber">
+    <label class="control" for="input">
+      点击输入
+      <input id="input" type="number" class="input_box" v-model="guess" @keyup.enter="onGuess" />
+    </label>
+    <div class="line_break_10"></div>
+    <div class="target" @click="onReset">点击重新开始游戏: {{ target }}</div>
+    <div class="line_break_10"></div>
     <div class="outline">
       <div class="box left-box">
         {{ min }}
@@ -9,13 +16,6 @@
         {{ max }}
       </div>
     </div>
-    <div class="line_break_10"></div>
-    <label for="input">
-      点击输入
-      <input id="input" type="number" class="input_box" v-model="guess" @keyup.enter="onGuess" />
-    </label>
-    <div class="line_break_10"></div>
-    <div class="target" @click="onReset">点击重新开始游戏: {{ target }}</div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -65,9 +65,20 @@ function onReset() {
 }
 </script>
 <style scoped lang="less">
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+/* 火狐 */
+input {
+  -moz-appearance: textfield;
+}
 .guessNumber {
+  position: relative;
   padding: 20px;
-  background: #e6ebf5;
+  background: url('@/assets/guessNum_bg.jpg') center center / cover no-repeat;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -79,20 +90,30 @@ function onReset() {
     height: 10px;
   }
   .target {
+    cursor: pointer;
     font-size: 20px;
-    color: #876;
+    color: #0f1162;
     opacity: v-bind(targetVisible);
   }
   .outline {
     display: flex;
     align-items: center;
+    width: 90vw;
+    perspective: 300px;
+    transform-style: preserve-3d;
+    max-width: 400px;
+
     .left-box {
-      background: #876;
-      color: #fff;
+      background: rgba(189, 228, 237, 0.2);
+      backdrop-filter: blur(8px);
+      color: #06cdc6;
+      transform: rotateY(-10deg);
     }
     .right-box {
-      background: #678;
-      color: #fff;
+      background: rgba(255, 161, 191, 0.2);
+      backdrop-filter: blur(8px);
+      color: #5e17e1;
+      transform: rotateY(20deg);
     }
     .box {
       font-size: 30px;
@@ -105,8 +126,7 @@ function onReset() {
     }
     .line {
       height: 2px;
-      width: 20px;
-      background: #987;
+      flex: 1;
     }
   }
   .input_box {
@@ -115,7 +135,13 @@ function onReset() {
     text-align: center;
     border-radius: 4px;
     border: none;
-    background: #e6ebf5;
+    background: transparent;
+    font-size: 20px;
+  }
+
+  .control {
+    font-size: 20px;
+    color: #1c0f40;
   }
 }
 </style>

@@ -3,9 +3,9 @@ import { createApp, createRenderer } from 'vue';
 import Villiam from './Villiam.vue';
 import './index.less';
 import router from './route/router';
-import resize from './utils/resize';
+// import resize from './utils/resize';
 
-resize();
+// resize();
 // vue3变动 不再使用 new Vue();
 const app = createApp(Villiam);
 

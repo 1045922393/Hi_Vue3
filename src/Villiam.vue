@@ -81,5 +81,6 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  background: url('@/assets/water-bg.jpeg') center center / 2400px 1500px no-repeat;
 }
 </style>

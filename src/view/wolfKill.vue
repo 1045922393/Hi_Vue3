@@ -202,8 +202,7 @@ vertical.setup();
   .identity_img {
     border-radius: 8px;
     overflow: hidden;
-    width: 200px;
-    height: 200px;
+    width: 190px;
   }
 }
 .group {

@@ -1,0 +1,19 @@
+// 字体既要渐变又要阴影
+.gradientShadow(@backgroundGradient; @textShadow) {
+  color: transparent;
+  display: block;
+  position: relative;
+  text-shadow: @textShadow;
+  &::after {
+    content: attr(data-content);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: @backgroundGradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+  }
+}

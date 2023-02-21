@@ -1,7 +1,7 @@
 <template>
   <div class="hnzxknk">
     <div class="box" @click="change">
-      <span class="word"></span>
+      <span class="word" :data-content="tipWord">{{ tipWord }}</span>
     </div>
   </div>
 </template>
@@ -16,12 +16,13 @@ import { onMounted, onUnmounted, onBeforeUnmount, ref, computed } from 'vue';
 // ==================================== 四、API类  ====================================
 const wordColor = ref('rgb(0,0,0)');
 let timeId: any = null;
+const tipWord = ref('');
 const change = () => {
   if (timeId) clearTimeout(timeId);
   timeId = setTimeout(() => {
     const box = document.querySelector('.word') as any;
     const body = document.querySelector('body') as any;
-    box.innerText = word.splice(Math.floor(Math.random() * word.length), 1);
+    tipWord.value = word.splice(Math.floor(Math.random() * word.length), 1)[0];
     body.style.backgroundColor = rndColor();
     wordColor.value = rndColor();
   }, 300);
@@ -66,6 +67,20 @@ const textDirection = () => {
   }
 };
 
+const wordLinearColor = computed(() => {
+  return `linear-gradient(
+        to bottom,
+        ${wordColor.value},
+        #eee,
+        #eee,
+        ${wordColor.value}
+      )`;
+});
+
+const wordShadowColor = computed(() => {
+  return `2px 2px 2px ${wordColor.value}, 3px 3px 5px rgba(198,227,255,0.3), 0px 6px 24px rgba(215,212,255,0.52)`;
+});
+
 onMounted(() => {
   textDirection();
   window.addEventListener('resize', textDirection);
@@ -107,6 +122,9 @@ onUnmounted(() => {
 .hnzxknk {
   width: 100%;
   height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+
   .box {
     display: flex;
     justify-content: center;
@@ -118,19 +136,27 @@ onUnmounted(() => {
     font-size: 150px;
     // color: #eee;
     .word {
-      // transform: rotate(v-bind(degComp));
-      background-image: linear-gradient(
-        to bottom,
-        v-bind(wordColor),
-        #eee,
-        #eee,
-        v-bind(wordColor)
-      );
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
+      .gradientShadow(v-bind(wordLinearColor); v-bind(wordShadowColor));
+      // animation: move-letter 4s linear forwards;  //forwards当动画完成后，保持最后一帧的状态
     }
-    // white-space: nowrap;
   }
+  @keyframes move-letter{
+    0% {
+      opacity: 0;
+      letter-spacing: -40px;
+      filter: blur(10px);
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      filter: blur(5px);
+    }
+    100% {
+      letter-spacing: 20px;
+      filter: blur(2px);
+    }
+  }
+
 }
 </style>

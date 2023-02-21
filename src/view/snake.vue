@@ -243,6 +243,22 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: paleturquoise;
+  text-shadow: 1px 1px 12px #000;
+  button {
+    font-size: 24px;
+    border: none;
+    color: paleturquoise;
+    text-shadow: 1px 1px 12px #000;
+    background-color: transparent;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 800;
+
+    &:hover {
+      box-shadow: 1px 1px 20px rgb(219, 94, 94);
+    }
+  }
   #ctx {
     border-radius: 4px;
     box-shadow: 0 0 3px 2px #9d9d9d;

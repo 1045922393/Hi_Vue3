@@ -10,6 +10,11 @@ export default () => {
     build: {
       outDir: 'villiam',
     },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'), // 路径别名
+      },
+    },
     plugins: [
       vue(),
       alias({
@@ -21,5 +26,13 @@ export default () => {
         ],
       }),
     ],
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+          additionalData: `@import "${path.resolve(__dirname, 'src/style/index.less')}";`,
+        },
+      },
+    },
   });
 };

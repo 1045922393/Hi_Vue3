@@ -157,9 +157,9 @@ img,
   height: 600px;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.75);
-  border: 10px solid red;
+  border: 10px solid rgba(225, 68, 68, 0.6);
   &.greenStatus {
-    border: 10px solid greenyellow;
+    border: 10px solid rgba(89, 221, 12, 0.871);
   }
   .waiting {
     font-size: 50px;
@@ -255,7 +255,7 @@ img,
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #fff;
+  background: url('@/assets/desktop.jpeg') 100% 100% no-repeat;
   z-index: 9999;
 
   .close {

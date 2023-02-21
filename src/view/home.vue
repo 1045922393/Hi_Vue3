@@ -17,14 +17,10 @@
         :to="item.path"
         @click="clickRouter(index, item.path)"
       >
-        {{ item.name }}
+        <span :data-content="item.name">
+          {{ item.name }}
+        </span>
       </div>
-      <!-- <router-link class="game_box" :to="{ path: './hnzxknk' }"
-        >害你在心口难开</router-link
-      >
-      <router-link class="game_box" :to="{ path: './wolf_kill' }"
-        >狼人杀</router-link
-      > -->
     </div>
   </div>
 </template>
@@ -117,7 +113,8 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
   .out_box {
     padding: 10px;
     position: relative;
@@ -140,49 +137,52 @@ onBeforeUnmount(() => {
     width: 200px;
     min-height: 200px;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 800;
     color: #fff;
-    background-color: black;
     border: none;
     perspective: 800px;
     transform-style: preserve-3d;
     transition: all 1.5s;
     left: 50%;
     top: 50%;
+    background: url('@/assets/water_di.jpg') left top / 100% 100% no-repeat;
+    span {
+      .gradientShadow(linear-gradient(0deg, #CBEEFF 0%, #FFFFFF 49.7314453125%);2px 2px 2px #0E2130, 3px 3px 3px rgba(198,227,255,0.3), 0px 6px 24px rgba(215,212,255,0.52));
+    }
   }
   .blur {
-    filter: blur(6px);
+    filter: blur(2px);
   }
 
   .current {
     filter: hue-rotate(v-bind(huValueComp));
-    background: paleturquoise;
+    // background-color: paleturquoise;
     box-shadow: 0px 0px 10px 10px paleturquoise;
   }
   .hide_img {
-    transform: perspective(800px) translateX(-110%) translateZ(-1000px) translateY(-50%) scale(0.7);
+    transform: perspective(800px) translateX(-80%) translateZ(-1000px) translateY(250%) rotateX(90deg) scale(1) ;
     z-index: 7;
   }
 
   .leftBackImg {
-    transform: perspective(800px) translateX(-215%) translateZ(-800px) translateY(-60%)
-      rotateY(-150deg) scale(0.8);
+    transform: perspective(800px) translateX(-415%) translateZ(-800px) translateY(60%)
+      rotateY(-10deg) scale(0.8);
     z-index: 8;
   }
   .rightBackImg {
-    transform: perspective(800px) translateX(15%) translateZ(-800px) translateY(-60%)
+    transform: perspective(800px) translateX(115%) translateZ(-800px) translateY(-260%)
       rotateY(150deg) scale(0.8);
     z-index: 8;
   }
 
   .leftImg {
-    transform: perspective(800px) translateX(-200%) translateZ(-400px) translateY(-60%)
-      rotateY(-30deg);
+    transform: perspective(800px) translateX(-200%) translateZ(-400px) translateY(-220%)
+      rotateY(-10deg);
     z-index: 9;
   }
   .rightImg {
-    transform: perspective(800px) translateX(65%) translateZ(-400px) translateY(-60%) rotateY(30deg);
+    transform: perspective(800px) translateX(165%) translateZ(-400px) translateY(-60%) rotateY(10deg);
     z-index: 9;
   }
   .centerImg {

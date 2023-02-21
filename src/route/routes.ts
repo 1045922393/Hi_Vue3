@@ -1,5 +1,10 @@
 export const routes = [
   {
+    path: '/hnzxknk',
+    name: '害你在心',
+    component: () => import('../view/hnzxknk.vue'),
+  },
+  {
     path: '/guessNumber',
     name: '猜数字',
     component: () => import('../view/guessNumber.vue'),
@@ -13,11 +18,6 @@ export const routes = [
     path: '/wolf_kill',
     name: '狼人杀',
     component: () => import('../view/wolfKill.vue'),
-  },
-  {
-    path: '/hnzxknk',
-    name: '害你在心口难开',
-    component: () => import('../view/hnzxknk.vue'),
   },
   {
     path: '/null',
@@ -36,7 +36,7 @@ export const routes = [
   },
   {
     path: '/boyAndGirl',
-    name: '😊了个😊',
+    name: '消消乐',
     component: () => import('../view/xiaoxiaole/index.vue'),
   },
   {
