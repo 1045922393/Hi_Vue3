@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import alias from '@rollup/plugin-alias';
 const path = require('path');
+import commonConfig from './vite.common.config.ts';
 
 export default ({ command, mode }) => {
   return defineConfig({
@@ -12,29 +13,6 @@ export default ({ command, mode }) => {
     build: {
       outDir: 'villiam',
     },
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'), // 路径别名
-      },
-    },
-    plugins: [
-      vue(),
-      alias({
-        entries: [
-          {
-            find: '@',
-            replacement: path.resolve(__dirname, 'src'),
-          },
-        ],
-      }),
-    ],
-    css: {
-      preprocessorOptions: {
-        less: {
-          javascriptEnabled: true,
-          additionalData: `@import "${path.resolve(__dirname, 'src/style/index.less')}";`,
-        },
-      },
-    },
+    ...commonConfig,
   });
 };
