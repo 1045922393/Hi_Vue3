@@ -1,5 +1,10 @@
 export const routes = [
   {
+    path: '/sgs',
+    name: '三国杀',
+    component: () => import('../view/sanguosha/index.vue'),
+  },
+  {
     path: '/hnzxknk',
     name: '害你在心',
     component: () => import('../view/hnzxknk.vue'),
