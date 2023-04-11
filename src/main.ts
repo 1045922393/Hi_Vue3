@@ -5,6 +5,7 @@ import './index.less';
 import router from './route/router';
 // import resize from './utils/resize';
 import 'vue-global-api';
+import 'element-plus/dist/index.css';
 
 // resize();
 // vue3变动 不再使用 new Vue();

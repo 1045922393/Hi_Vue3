@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "echarts": "^4.9.0",
+    "element-plus": "^2.3.3",
     "jquery": "^3.6.3",
     "json-templater": "^1.2.0",
     "long": "^5.2.0",
+    "nosleep.js": "^0.12.0",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
   },
