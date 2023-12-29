@@ -40,6 +40,11 @@ export const routes = [
     component: () => import('../view/xiaoxiaole/index.vue'),
   },
   {
+    path: '/pricePerformanceRatio',
+    name: '性价比',
+    component: () => import('../view/pricePerformanceRatio/index.vue'),
+  },
+  {
     path: '/',
     name: '首页',
     hide: true,

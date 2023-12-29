@@ -29,8 +29,8 @@
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": false,
-    "source.fixAll": true
+    "source.organizeImports": "never",
+    "source.fixAll": "explicit"
   },
   "less.compile": {
     "compress": false, // true => remove surplus whitespace
