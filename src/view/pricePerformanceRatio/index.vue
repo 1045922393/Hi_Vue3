@@ -1,23 +1,32 @@
 <template>
-  <div v-for="(goodItem, goodIndex) in goods" :key="goodItem.id">
-    <div :class="{ cheapest: goodIndex === cheapestTagIndex }">
-      <input class="w100" v-model="goodItem.name" />:
-      <input class="w100" v-model="goodItem.money" type="text" />元
-      <input class="w100" v-model="goodItem.amount" type="text" />单位
+  <div class="page_layout">
+    <div v-for="(goodItem, goodIndex) in goods" :key="goodItem.id">
+      <div :class="{ cheapest: goodIndex === cheapestTagIndex }">
+        <NInput class="w100" v-model:value="goodItem.name" />:
+        <NInput class="w100" v-model:value="goodItem.money" type="text" />元
+        <NInput class="w100" v-model:value="goodItem.amount" type="text" />单位
+      </div>
+      <div>单价:{{ price(goodItem.money, goodItem.amount) }}</div>
     </div>
-    <div>单价:{{ price(goodItem.money, goodItem.amount) }}</div>
-  </div>
 
-  <button class="btn" @click="addItem">添加</button>
-  <button class="btn" @click="computedGoods">计算</button>
-  <div>
-    性价比之王:{{ goods[cheapestTagIndex].name + ':' + goods[cheapestTagIndex].money + '元' }}
+    <NButton class="btn" @click="addItem">添加</NButton>
+    <NButton class="btn" @click="computedGoods">计算</NButton>
+    <div class="bg-highlight">
+      性价比之王:{{
+        goods[cheapestTagIndex].name +
+        ':' +
+        goods[cheapestTagIndex].money +
+        '元' +
+        goods[cheapestTagIndex].amount +
+        '单位'
+      }}
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-
+import { NButton, NInput } from 'naive-ui';
 const goods = ref([itemInit()]);
 
 const cheapest = ref({});
@@ -65,6 +74,9 @@ function computedGoods() {
 </script>
 
 <style scoped lang="less">
+.page_layout {
+  padding: 8px;
+}
 .w100 {
   width: 100px;
 }
@@ -76,9 +88,14 @@ function computedGoods() {
 }
 
 .btn {
-  border: none;
   margin: 10px;
-  padding: 4px 8px;
   background: peru;
+}
+
+.bg-highlight {
+  padding: 8px;
+  background: gainsboro;
+  color: blueviolet;
+  font-weight: bolder;
 }
 </style>
