@@ -1,32 +1,44 @@
 <template>
   <div class="page_layout">
-    <div v-for="(goodItem, goodIndex) in goods" :key="goodItem.id">
-      <div :class="{ cheapest: goodIndex === cheapestTagIndex }">
-        <NInput class="w100" v-model:value="goodItem.name" />:
-        <NInput class="w100" v-model:value="goodItem.money" type="text" />元
-        <NInput class="w100" v-model:value="goodItem.amount" type="text" />单位
-      </div>
-      <div>单价:{{ price(goodItem.money, goodItem.amount) }}</div>
-    </div>
-
-    <NButton class="btn" @click="addItem">添加</NButton>
-    <NButton class="btn" @click="computedGoods">计算</NButton>
     <div class="bg-highlight">
       最优选:{{
+        '[' +
         goods[cheapestTagIndex].name +
-        ':' +
+        ']' +
         goods[cheapestTagIndex].money +
         '元' +
         goods[cheapestTagIndex].amount +
         '单位'
       }}
     </div>
+    <n-card
+      :class="{ cheapest: goodIndex === cheapestTagIndex }"
+      class="card-layout"
+      v-for="(goodItem, goodIndex) in goods"
+      :key="goodItem.id"
+      :title="'单价:' + price(goodItem.money, goodItem.amount)"
+    >
+      <n-form>
+        <n-form-item label="商品名">
+          <NInput class="w100" v-model:value="goodItem.name" />
+        </n-form-item>
+        <n-form-item label="价格(元)">
+          <NInputNumber class="w100" v-model:value="goodItem.money" type="text" />
+        </n-form-item>
+        <n-form-item label="数量(单位)">
+          <NInputNumber class="w100" v-model:value="goodItem.amount" type="text" />
+        </n-form-item>
+      </n-form>
+    </n-card>
+
+    <NButton class="btn" @click="addItem" type="primary" color="#8a2be2">添加</NButton>
+    <!-- <NButton class="btn" @click="computedGoods" type="info">计算</NButton> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import { NButton, NInput } from 'naive-ui';
+import { computed, ref, watchEffect, watch } from 'vue';
+import { NButton, NInputNumber, NInput, NCard, NForm, NFormItem } from 'naive-ui';
 const goods = ref([itemInit()]);
 
 const cheapest = ref({});
@@ -56,6 +68,14 @@ function addItem() {
   goods.value.push(itemInit());
 }
 
+watch(
+  () => goods.value,
+  () => {
+    computedGoods();
+  },
+  { deep: true },
+);
+
 function computedGoods() {
   let cheapestIndex = 0;
   cheapestTagIndex.value = 0;
@@ -78,9 +98,12 @@ function computedGoods() {
   padding: 8px;
 }
 .w100 {
-  width: 100px;
+  width: 180px;
 }
 
+.card-layout {
+  margin: 5px 0;
+}
 .cheapest {
   background: greenyellow;
   font-weight: bolder;
@@ -89,7 +112,7 @@ function computedGoods() {
 
 .btn {
   margin: 10px;
-  background: peru;
+  // background: peru;
 }
 
 .bg-highlight {
