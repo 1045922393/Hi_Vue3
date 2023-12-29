@@ -12,7 +12,7 @@
     <NButton class="btn" @click="addItem">添加</NButton>
     <NButton class="btn" @click="computedGoods">计算</NButton>
     <div class="bg-highlight">
-      性价比之王:{{
+      最优选:{{
         goods[cheapestTagIndex].name +
         ':' +
         goods[cheapestTagIndex].money +

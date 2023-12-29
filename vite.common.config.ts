@@ -32,7 +32,7 @@ export default {
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
-        additionalData: `@import "${path.resolve(__dirname, 'src/style/index.less')}";`,
+        additionalData: `@import "${path.resolve(__dirname, 'src/style/autoAdd.less')}";`,
       },
     },
     postcss: {

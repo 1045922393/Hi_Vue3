@@ -37,12 +37,12 @@ export const routes = [
   {
     path: '/boyAndGirl',
     name: '消消乐',
-    component: () => import('../view/xiaoxiaole/index.vue'),
+    component: () => import('../view/xiaoxiaole/xiaoxiaole.vue'),
   },
   {
     path: '/pricePerformanceRatio',
     name: '性价比',
-    component: () => import('../view/pricePerformanceRatio/index.vue'),
+    component: () => import('../view/pricePerformanceRatio/pricePerformanceRatio.vue'),
   },
   {
     path: '/',

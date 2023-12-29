@@ -1,7 +1,7 @@
 import { createApp, createRenderer } from 'vue';
 // import App from './App.vue'
 import Villiam from './Villiam.vue';
-import './index.less';
+import './global.less';
 import router from './route/router';
 // import resize from './utils/resize';
 import 'vue-global-api';

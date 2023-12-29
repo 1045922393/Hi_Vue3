@@ -31,7 +31,7 @@
 import { routes } from '@/route/routes';
 import { useRouter } from 'vue-router';
 // ==================================== 三、方法类 ====================================
-import { rndColor } from '../utils';
+import { rndColor } from '../utils/utils';
 // import stringRender from "json-templater/string";
 // import objectRender from "json-templater/object";
 // import jsonTemp from "../json/template.json";

@@ -12,6 +12,13 @@ export default ({ command, mode }) => {
     base: '/villiam/',
     build: {
       outDir: 'villiam',
+      rollupOptions: {
+        output: {
+          chunkFileNames: 'chunk/[name].js',
+          entryFileNames: 'entry/[name].js',
+          assetFileNames: 'asset/[name].[ext]',
+        },
+      },
     },
     ...commonConfig,
   });
